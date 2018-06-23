@@ -3,7 +3,6 @@
 
 - hosts: tomcat-servers
   become: yes
-  become_method: sudo
 
   roles:
     - selinux
