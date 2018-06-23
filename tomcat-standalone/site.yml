@@ -5,5 +5,4 @@
   become: yes
 
   roles:
-    - selinux
     - tomcat
