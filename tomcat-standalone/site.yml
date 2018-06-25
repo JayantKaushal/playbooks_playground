@@ -1,10 +1,9 @@
 ---
-- hosts: webservers
-  remote_user: yourname
-  tasks:
-    - service:
-        name: nginx
-        state: started
-      become: yes
-      become_method: sudo
-    
+# This playbook deploys a simple standalone Tomcat 7 server.
+
+- hosts: tomcat-servers
+  become: yes
+ 
+  roles:
+    - selinux
+    - tomcat
