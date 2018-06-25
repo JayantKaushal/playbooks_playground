@@ -1,10 +1,10 @@
 ---
-# This playbook deploys a simple standalone Tomcat 7 server.
-
-- hosts: all
-  become: yes
-
+- hosts: webservers
+  remote_user: yourname
   tasks:
-    - name: test connection
-      ping:
+    - service:
+        name: nginx
+        state: started
+      become: yes
+      become_method: sudo
     
