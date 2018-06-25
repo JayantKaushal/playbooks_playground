@@ -4,5 +4,7 @@
 - hosts: all
   become: yes
 
-  roles:
-    - tomcat
+  tasks:
+    - name: test connection
+      ping:
+    
