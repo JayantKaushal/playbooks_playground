@@ -3,6 +3,7 @@
   connection: local
   vars:
     key_name: admin-Default
+    name: SampleVM
     instance_type: t2.micro
     image: ami-1ff6fe7f
     subnet: subnet-6d439635
@@ -21,4 +22,4 @@
       vpc_subnet_id: "{{ subnet }}"
       assign_public_ip: "{{ assign_public_ip }}"
       instance_tags:
-        Name: database
+        Name: "{{ name }}"
