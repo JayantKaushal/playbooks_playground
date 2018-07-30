@@ -12,7 +12,7 @@
 
   tasks:
    - ec2:
-      key_name: admin-default
+      key_name: "{{ key_name }}"
       region: us-west-1
       aws_access_key: "{{ aws_access_key }}"
       aws_secret_key: "{{ aws_secret_key }}"
