@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    key_name: admin-Default
+    instance_type: t2.micro
+    image: somemi
+    subnet: vpcsomething
+    assign_public_ip: false
+
+  tasks:
+   - ec2:
+      key_name: admin-default
+      region: us-west-1
+      aws_access_key: AKIAJGPLJQEPGAMC37CA
+      aws_secret_key: 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
+      image: ami-1ff6fe7f
+      instance_type: t2.micro
+      vpc_subnet_id: subnet-6d439635
+      assign_public_ip: true
