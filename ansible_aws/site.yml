@@ -20,3 +20,5 @@
       instance_type: "{{ instance_type }}"
       vpc_subnet_id: "{{ subnet }}"
       assign_public_ip: "{{ assign_public_ip }}"
+      instance_tags:
+        Name: database
