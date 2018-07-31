@@ -9,4 +9,3 @@
 
 # Gather facts about all instances
 - ec2_instance_facts:
-
