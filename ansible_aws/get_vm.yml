@@ -8,5 +8,5 @@
 
   # Note: These examples do not set authentication details, see the AWS Guide for details.
 
-- name: gather facts about an AMI using ami-id
+  - name: gather facts about an AMI using ami-id
   ec2_instance_facts:
