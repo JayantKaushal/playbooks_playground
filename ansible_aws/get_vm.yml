@@ -5,8 +5,8 @@
     aws_access_key: aws_access_key
     instance_id: aws_access_key
     aws_secret_key: aws_secret_key
+# Note: These examples do not set authentication details, see the AWS Guide for details.
 
-  # Note: These examples do not set authentication details, see the AWS Guide for detailsddssdsd.
-  - ec2_instance_facts:
-    instance_ids:
-      - i-12345678
+# Gather facts about all instances
+- ec2_instance_facts:
+
