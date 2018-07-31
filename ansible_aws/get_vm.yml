@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    aws_access_key: aws_access_key
+    instance_id: aws_access_key
+    aws_secret_key: aws_secret_key
+
+  tasks:
+   - ec2_instance_facts:
+      aws_access_key: "{{ aws_access_key }}"
+      aws_secret_key: "{{ aws_secret_key }}"
+      instance_ids:
+       - "{{ instance_id }}"
+
