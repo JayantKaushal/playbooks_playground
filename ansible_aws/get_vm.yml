@@ -6,5 +6,7 @@
     instance_id: aws_access_key
     aws_secret_key: aws_secret_key
 
-  tasks:
-   - ec2_instance_facts
+  # Note: These examples do not set authentication details, see the AWS Guide for details.
+
+- name: gather facts about an AMI using ami-id
+  ec2_instance_facts:
