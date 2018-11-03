@@ -1,5 +1,5 @@
 ---
-- hosts: apache
+- hosts: Apache
   sudo: yes
   tasks:
     - name: install apache2
