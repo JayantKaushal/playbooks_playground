@@ -4,7 +4,7 @@
 - name: Install Mysql package
   yum: name={{ item }} state=installed
   with_items:
-   - mysql-server
+   - mariadb-server
    - MySQL-python
    - libselinux-python
    - libsemanage-python
@@ -15,15 +15,13 @@
 
 - name: Create Mysql configuration file
   template: src=my.cnf.j2 dest=/etc/my.cnf
-  notify:
-  - restart mysql
 
 - name: Start Mysql Service
   service: name=mysqld state=started enabled=yes
 
 - name: insert iptables rule
-  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ mysql_port }}"
-              insertafter="^:OUTPUT " line="-A INPUT -p tcp  --dport {{ mysql_port }} -j  ACCEPT"
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="3306"
+              insertafter="^:OUTPUT " line="-A INPUT -p tcp  --dport 3306 -j  ACCEPT"
   notify: restart iptables
 
 - name: Create Application Database
