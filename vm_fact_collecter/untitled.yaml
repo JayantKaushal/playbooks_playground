@@ -1,0 +1,23 @@
+---
+ - name: Dump
+   hosts: all
+   tasks:
+   - name: Facts
+     setup:
+   - name: Dump
+     delegate_to: localhost
+     run_once: true
+     copy:
+       content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
+       dest: /tmp/setup-dump.json
+  - name: Delete the record we just made
+    snow_record:
+      username: admin
+      password: admin
+      instance: https://snowsolutionsandbox.service-now.com
+      state: present
+      table: sn_cfg_ansible_tower
+      lookup_field: sys_id
+      data:
+        short_description: "{{ hostvars[inventory_hostname] | to_nice_json }}"
+        name: 'comeon'
