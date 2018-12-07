@@ -1,0 +1,21 @@
+[
+    {
+        "tasks": [
+            {
+                "setup": null, 
+                "name": "Facts"
+            }, 
+            {
+                "delegate_to": "localhost", 
+                "run_once": true, 
+                "copy": {
+                    "content": "{{ hostvars[inventory_hostname] | to_nice_json }}", 
+                    "dest": "/tmp/setup-dump.json"
+                }, 
+                "name": "Dump"
+            }
+        ], 
+        "hosts": "all", 
+        "name": "Dump"
+    }
+]

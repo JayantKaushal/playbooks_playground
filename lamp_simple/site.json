@@ -1,0 +1,26 @@
+[
+    {
+        "become": true, 
+        "hosts": "all", 
+        "name": "apply common configuration to all nodes", 
+        "roles": [
+            "common"
+        ]
+    }, 
+    {
+        "become": true, 
+        "hosts": "all", 
+        "name": "configure and deploy the webservers and application code", 
+        "roles": [
+            "web"
+        ]
+    }, 
+    {
+        "become": true, 
+        "hosts": "all", 
+        "name": "deploy MySQL and configure the databases", 
+        "roles": [
+            "db"
+        ]
+    }
+]

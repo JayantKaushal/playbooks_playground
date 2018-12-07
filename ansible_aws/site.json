@@ -1,0 +1,33 @@
+[
+    {
+        "connection": "local", 
+        "tasks": [
+            {
+                "ec2": {
+                    "aws_secret_key": "{{ aws_secret_key }}", 
+                    "aws_access_key": "{{ aws_access_key }}", 
+                    "key_name": "{{ key_name }}", 
+                    "region": "us-west-1", 
+                    "vpc_subnet_id": "{{ subnet }}", 
+                    "instance_type": "{{ instance_type }}", 
+                    "assign_public_ip": "{{ assign_public_ip }}", 
+                    "instance_tags": {
+                        "Name": "{{ name }}"
+                    }, 
+                    "image": "{{ image }}"
+                }
+            }
+        ], 
+        "hosts": "localhost", 
+        "vars": {
+            "aws_secret_key": "aws_secret_key", 
+            "subnet": "subnet-6d439635", 
+            "aws_access_key": "aws_access_key", 
+            "name": "SampleVM", 
+            "key_name": "admin-Default", 
+            "image": "ami-1ff6fe7f", 
+            "instance_type": "t2.micro", 
+            "assign_public_ip": false
+        }
+    }
+]

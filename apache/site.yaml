@@ -1,4 +1,3 @@
----
 - hosts: all
   become: yes
   vars:
@@ -36,7 +35,7 @@
         - restart httpd
     - name: Turning off SELiniux
       command: setenforce 0
-      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'		    
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     
     - name: http listen on port for centos {{ http_port }}
       lineinfile: dest=/etc/httpd/conf/httpd.conf regexp="^Listen " line="Listen {{ http_port }}" state=present
@@ -63,7 +62,10 @@
     - name: start the firewalld service
       service: name=firewalld state=restarted
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
+    - name: Gather facts from new server
+      setup:
+        filter: ansible_default_ipv4.address
+        fact_path: '/tmp/test'
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted

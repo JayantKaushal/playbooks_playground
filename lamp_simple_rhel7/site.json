@@ -1,0 +1,26 @@
+[
+    {
+        "remote_user": "root", 
+        "hosts": "all", 
+        "name": "apply common configuration to all nodes", 
+        "roles": [
+            "common"
+        ]
+    }, 
+    {
+        "remote_user": "root", 
+        "hosts": "webservers", 
+        "name": "configure and deploy the webservers and application code", 
+        "roles": [
+            "web"
+        ]
+    }, 
+    {
+        "remote_user": "root", 
+        "hosts": "dbservers", 
+        "name": "deploy MySQL and configure the databases", 
+        "roles": [
+            "db"
+        ]
+    }
+]

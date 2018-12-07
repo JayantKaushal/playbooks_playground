@@ -1,0 +1,14 @@
+[
+    {
+        "remote_user": "root", 
+        "hosts": "all", 
+        "name": "Install WordPress, MySQL, Nginx, and PHP-FPM", 
+        "roles": [
+            "common", 
+            "mysql", 
+            "nginx", 
+            "php-fpm", 
+            "wordpress"
+        ]
+    }
+]
