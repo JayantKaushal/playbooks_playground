@@ -19,4 +19,3 @@
          allocate_public_ip: true
          max_bandwidth_out: 50
          vswitch_id: '{{ created_vsw.vswitch_id}}'
-      register: create_instance
