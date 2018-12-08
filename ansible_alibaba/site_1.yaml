@@ -1,0 +1,41 @@
+# basic provisioning example vpc network
+- name: basic provisioning example
+  hosts: localhost
+  vars:
+    alicloud_access_key: <your-alicloud-access-key-id>
+    alicloud_secret_key: <your-alicloud-access-secret-key>
+    alicloud_region: cn-beijing
+    image: ubuntu1404_64_40G_cloudinit_20160727.raw
+    instance_type: ecs.n4.small
+    vswitch_id: vsw-abcd1234
+    assign_public_ip: True
+    max_bandwidth_out: 10
+    host_name: myhost
+    password: mypassword
+    system_disk_category: cloud_efficiency
+    system_disk_size: 100
+    internet_charge_type: PayByBandwidth
+    group_id: sg-f2rwnfh23r
+    sg_action: join
+
+    instance_ids: ["i-abcd12346", "i-abcd12345"]
+    force: True
+
+  tasks:
+    - name: launch ECS instance in VPC network
+      alicloud_instance:
+        alicloud_access_key: '{{ alicloud_access_key }}'
+        alicloud_secret_key: '{{ alicloud_secret_key }}'
+        alicloud_region: '{{ alicloud_region }}'
+        image: '{{ image }}'
+        system_disk_category: '{{ system_disk_category }}'
+        system_disk_size: '{{ system_disk_size }}'
+        instance_type: '{{ instance_type }}'
+        vswitch_id: '{{ vswitch_id }}'
+        assign_public_ip: '{{ assign_public_ip }}'
+        internet_charge_type: '{{ internet_charge_type }}'
+        max_bandwidth_out: '{{ max_bandwidth_out }}'
+        instance_tags:
+            Name: created_one
+        host_name: '{{ host_name }}'
+        password: '{{ password }}'
