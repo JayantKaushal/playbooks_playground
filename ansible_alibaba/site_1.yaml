@@ -2,8 +2,8 @@
 - name: basic provisioning example
   hosts: localhost
   vars:
-    alicloud_access_key: <your-alicloud-access-key-id>
-    alicloud_secret_key: <your-alicloud-access-secret-key>
+    alicloud_access_key: LTAIjkotmZULSljk
+    alicloud_secret_key: 1boy3KyUzZoaBqhWmtGj06g7qDLaHK
     alicloud_region: cn-beijing
     image: ubuntu1404_64_40G_cloudinit_20160727.raw
     instance_type: ecs.n4.small
