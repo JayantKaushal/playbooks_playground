@@ -1,21 +1,42 @@
-# alicloud_setup.yml
-- name: Create instance(s)
+# basic provisioning example vpc network
+- name: basic provisioning example
   hosts: localhost
-  connection: local
+  vars:
+    alicloud_access_key: LTAIjkotmZULSljk
+    alicloud_secret_key: 1boy3KyUzZoaBqhWmtGj06g7qDLaHK
+    alicloud_region:    ap-south-1
+    image: ubuntu_16_0402_64_20G_alibase_20180409.vhd
+    instance_type: ecs.n4.small
+    vswitch_id: vsw-a2ds2k3jddymbeugqtzor
+    assign_public_ip: True
+    max_bandwidth_out: 10
+    host_name: myhost
+    password: TheWalkingDe@3
+    system_disk_category: cloud_efficiency
+    system_disk_size: 100
+    internet_charge_type: PayByTraffic
+    sg_action: join
+
+    instance_ids: ["i-abcd12346", "i-abcd12345"]
+    force: True
 
   tasks:
-   - name: Create a set of instances
-     alicloud_instance:
-         group_id: '{{ created_group.group_id }}'
-         instance_type: ecs.n4.small
-         image_id: "{{ ami_id }}"
-         instance_name: "My-new-instance"
-         instance_tags:
-             Name: NewECS
-             Version: 0.0.1
-         count: 5
-         count_tag:
-             Name: NewECS
-         allocate_public_ip: true
-         max_bandwidth_out: 50
-         vswitch_id: '{{ created_vsw.vswitch_id}}'
+    - name: launch ECS instance in VPC network
+      ali_instance:
+        alicloud_access_key: '{{ alicloud_access_key }}'
+        alicloud_secret_key: '{{ alicloud_secret_key }}'
+        alicloud_region: '{{ alicloud_region }}'
+        image: '{{ image }}'
+        system_disk_category: '{{ system_disk_category }}'
+        system_disk_size: '{{ system_disk_size }}'
+        security_groups: 
+            sg-a2d6kqlwc6uciwnylf01  
+        instance_type: '{{ instance_type }}'
+        vswitch_id: '{{ vswitch_id }}'
+        assign_public_ip: '{{ assign_public_ip }}'
+        internet_charge_type: '{{ internet_charge_type }}'
+        max_bandwidth_out: '{{ max_bandwidth_out }}'
+        instance_tags:
+            Name: my_instance_1
+        host_name: '{{ host_name }}'
+        password: '{{ password }}'
